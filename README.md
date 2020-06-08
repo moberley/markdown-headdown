@@ -43,7 +43,7 @@ MARKDOWN = {
 You can selectively disable processing of a particular heading by adding the `headdown="0"` attribute to it:
 
 ```html
-<h1 headdown="1">This will remain level 1!</h1>
+<h1 headdown="0">This will remain level 1!</h1>
 ```
 
 ... or using the `attr_list` extension:

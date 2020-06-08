@@ -30,8 +30,8 @@ class DowngradeHeadingsPostprocessor(Postprocessor):
     def downgrade(self, match):
         element = ET.fromstring(match.group(0))
 
-        # Only process this heading if 'headdown="1"' (or missing...)
-        if element.attrib.get('headdown', 1) == 1:
+        # Skip heading if 'headdown="0"' and remove the headdown attribute
+        if element.attrib.pop('headdown', '1') != '0':
             # For all headings, increase their heading number by `offset`.
             # If the new heading number is > 6, use 6 instead.
             element.tag = 'h%d' % min(6, int(match.group(1))+self.offset)
